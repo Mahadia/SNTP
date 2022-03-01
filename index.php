@@ -20,7 +20,7 @@
                     <button class="getting-started-button2 button" type="submit" href="admin.php">Admin</button>
                 </form>
             </div>
-            <img src="img/Capture reviews.PNG" alt="image" class="getting-started-image" />
+            <img src="img/Capture_reviews.PNG" alt="image" class="getting-started-image" />
                    
         </div>
     </div>
