@@ -10,7 +10,7 @@ from _thread import *
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-model_path = "sentiment_classifier3.tf"
+model_path = "sentiment_classifier.tf"
 model = None
 
 host = '127.0.0.1'
