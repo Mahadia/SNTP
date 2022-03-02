@@ -7,6 +7,6 @@ Port 9919 is dedicated to control messages, which allow for reloading the infere
 **Note:**
 The Tensorflow model was developed with Tensorflow version 2.8.0 and Python 3.8.10
 
-## IA Devel
+## TF Model Trainer
 
-Contains various files/docs/programs in progress for the cleaning and augmentation of the dataset and the training and optimization of the tensorflow model.
+This contains the cleaned dataset and training algorithm for the TF Sentiment Classifier Model.
