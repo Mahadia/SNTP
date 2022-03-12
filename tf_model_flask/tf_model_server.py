@@ -56,7 +56,7 @@ def post_handler(data):
             response["prediction"] = prediction
             return jsonify(**response)
     # If saving a new prediction record
-    if data["action"] == "save_record":
+    if data["action"] == "record":
         try:
             # Save the record to the database
             while ds.live_lock:
@@ -73,11 +73,11 @@ def post_handler(data):
                 if not tf.retrain_lock:
                     retrain_thread = threading.Thread(target=retrain)
                     retrain_thread.start()
-            return jsonify({"status": "Success"})
+            return jsonify({"status": "success"})
         # If save record should fail for any reason
         except Exception as e:
             logging.error(e)
-            return jsonify({"status": "Failure"})
+            return jsonify({"status": "failure"})
     abort(404)
 
 # HANDLE ALL GET REQUESTS
