@@ -18,7 +18,7 @@ Launch 'tf\_model\_flask/tf\_model\_server.py' to start the Flask server. This p
 
 #### 4. Retrieve Most Recent Training Graph
 - GET:		{params: {target: "monitor_graph"}}
-- RESPONSE:	\<\PNG IMAGE>
+- RESPONSE:	< PNG IMAGE >
 
 ## TF Model Trainer
 
