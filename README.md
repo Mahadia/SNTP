@@ -2,7 +2,7 @@
 
 ## TF Model Flask
 
-Launch 'tf\_model\_flask/tf\_model\_server.py' to start the Flask server. This provides a RESTful API for retraining the AI Model, Adding new records to the dataset and retrieving monitor information.
+Launch 'tf\_model\_flask/tf\_model\_server.py' to start the Flask server. This provides a RESTful API for retraining the AI Model, Adding new records to the dataset and retrieving monitor information. After 1000 new labeled text samples have been added to the dataset the AI retraining process will trigger automatically. The newly trained model will be compared with the old model. If the new model is better the old model will be archived and the new model will go live.
 
 #### 1. Make Prediction
 - POST:		{action: "predict", text: "I'm lovin it"}
