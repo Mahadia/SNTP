@@ -1,0 +1,8 @@
+<div class="review-form-card">
+    <h2>{{ reviewForm.title }}</h2>
+    <p> Mise en ligne le {{ reviewForm.createdDate }}</p>
+    <img [src]="reviewForm.imageUrl" [alt]="reviewForm.title">
+    <p>{{ reviewForm.description }}</p>
+    <p> ✅{{ reviewForm.snaps }}</p>
+    <button (click)="onAddReview()" type="button" class="btn btn-primary">{{ btnText}}</button>
+</div>
