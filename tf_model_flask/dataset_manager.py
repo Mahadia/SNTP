@@ -62,7 +62,7 @@ class DS_Manager:
             f.write(record)
         self.ds_count += 1
         logging.info("Dataset Count: {}".format(self.ds_count))
-        if ds_count >= 1000:
+        if self.ds_count >= 1000:
             return 1
         return 0
 
@@ -77,7 +77,14 @@ class DS_Manager:
             with open(self.live_ds_path, 'rb') as f:
                 cnt_gen = self.count_generator(f.raw.read)
                 count = sum(buffer.count(b'\n') for buffer in cnt_gen)
+                if count == 1:
+                    f.seek(0)
+                    lines = f.readlines()
+                    print("These are lines: {}".format(lines))
+                    if(lines[0] == ''):
+                        count = 0
                 self.ds_count = count
+
         else:
             self.ds_count = 0
         logging.info("Dataset Count: {}".format(self.ds_count))

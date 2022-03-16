@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from datetime import datetime
 import os, threading, logging, glob, json
 from os.path import exists
 
@@ -54,6 +55,9 @@ def post_handler(data):
             response = {"prediction": None, "text": data['text']}
             prediction = tf.predict_sentiment(data["text"])
             response["prediction"] = prediction
+            current_time = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+            response["date"] = current_time
+            response["action"] = "record"
             return jsonify(**response)
     # If saving a new prediction record
     if data["action"] == "record":
