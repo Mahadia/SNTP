@@ -1,0 +1,16 @@
+<app-top-bar id="app-bar" (loginEvent)="loginRequest($event)"></app-top-bar>
+<div id="bottom-view-div">
+	<div *ngIf="!adminUser" id="user-view-div">
+		<app-user-input></app-user-input>
+	</div>
+	<div *ngIf="adminUser" id="admin-view-div">
+		<app-monitor-tabs (tabEvent)="dataRequest($event)"></app-monitor-tabs>
+	</div>
+	<div *ngIf="!adminUser" id="splash-view-div">
+		<app-splash ></app-splash>
+	</div>
+	<div *ngIf="adminUser" id="monitor-view-div">
+		<app-monitor-users *ngIf="dataType === 'users_data'"></app-monitor-users>
+		<app-monitor-train *ngIf="dataType === 'train_data'"></app-monitor-train>
+	</div>
+</div>

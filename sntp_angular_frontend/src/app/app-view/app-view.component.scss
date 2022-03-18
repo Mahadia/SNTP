@@ -1,0 +1,41 @@
+#bottom-view-div {
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: stretch;
+}
+#user-view-div {
+	margin: 0 auto;
+	background: white;
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+#admin-view-div {
+	margin: 0 auto;
+	background: linear-gradient(#FA9B33, #FF5F41);
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	width: 25%;
+	height: 100%;
+	margin-top: 1%;
+	float: left;
+}
+#splash-view-div {
+	margin: 0 auto;
+	background: linear-gradient(#FA9B33, #FF5F41);
+	border-bottom-left-radius: 15px;
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+#monitor-view-div {
+	margin: 0 auto;
+	background: white;
+	border-bottom-left-radius: 15px;
+	width: 75%;
+	height: 100%;
+	float: right;
+}

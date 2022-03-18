@@ -1,0 +1,12 @@
+<div id="reply-div">
+  <h1 mat-dialog-title>Thanks for your review !</h1>
+  <div mat-dialog-content>
+    <p>Our AI has determined your review to be :</p>
+    <h3>{{data.prediction}}</h3>
+    <p>Is this accurate ?</p>
+  </div>
+  <div mat-dialog-actions id="reply-btn-div">
+    <button mat-button id="yes-btn" class="reply-btn" (click)="onYesClick()">Yes</button>
+    <button mat-button id="no-btn" class="reply-btn" (click)="onNoClick()">No</button>
+  </div>
+</div>

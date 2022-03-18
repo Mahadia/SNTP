@@ -1,0 +1,30 @@
+#login-div {
+  text-align: center;
+}
+.login-elem {
+  margin: 3px;
+}
+.login-label {
+  margin-right: 5px;
+}
+#login-btn-div {
+  margin: 0 auto;
+  text-align: center;
+  width: 70%;
+}
+.login-btn {
+  background: #346EEB;
+	color: white;
+	border-style: outset;
+	border-color: #0FA6A2;
+	border-radius: 10px;
+	height: 30px;
+	width: 100px;
+	max-width: 100%;
+	margin: 5px;
+	font: bold 15px arial,sans-serif;
+	text-shadow: none;
+}
+.login-btn:hover {
+	background: #447EFB;
+}

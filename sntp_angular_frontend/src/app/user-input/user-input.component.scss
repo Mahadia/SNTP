@@ -1,0 +1,63 @@
+#form-label{
+	display: block;
+  text-align: center;
+	margin-left: 5%;
+	margin-top: 30%;
+	margin-bottom: 10px;
+	font-size: 2em;
+}
+#form-textarea{
+	font-size: 20px;
+	border: 15px solid #000000;
+	background: White;
+	border-radius: 25px;
+	resize: none;
+	overflow: auto;
+	max-width: 50%;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+	height: 100%;
+}
+#form-textarea:focus{
+	border-color: #346EEB;
+}
+#form-textarea:hover{
+	//border-color: #606060;
+}
+#form-submit {
+	margin: 0 auto;
+	background: #FE7439;
+	color: white;
+	border: 5px;
+	border-style: solid;
+	border-color: #FF6040;
+	border-radius: 10px;
+	height: 50px;
+	width: 15%;
+	max-width: 15%;
+	margin-left: 36%;
+	margin-right: 3%;
+	font: bold 15px arial,sans-serif;
+	text-shadow: none;
+}
+#form-submit:hover {
+	background: #FF9050;
+}
+#form-reset {
+	margin: 0 auto;
+	background: #346EEB;
+	color: white;
+	border: 5px;
+	border-style: solid;
+	border-color: #144EDB;
+	border-radius: 10px;
+	height: 50px;
+	width: 15%;
+	max-width: 15%;
+	font: bold 15px arial,sans-serif;
+	text-shadow: none;
+}
+#form-reset:hover {
+	background: #447EFB;
+}

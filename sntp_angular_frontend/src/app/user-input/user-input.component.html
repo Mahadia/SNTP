@@ -1,0 +1,9 @@
+	<!-- <h1>Welcome to random image reviewer.com !</h1>
+	<img id="rand-image" [src]="IMAGE_URL" alt="Ooops, we can't find any images.">
+	<h3>Please tell us your opinion of the above image ?</h3> -->
+	<form (ngSubmit)="onSubmit()">
+		<label for="text-area" id="form-label">Write a Review !</label>
+		<textarea [(ngModel)]="textAreaValue" type="text" id="form-textarea" name="text-area"></textarea>
+		<input  mat-raised-button id="form-submit" type="submit" value="Submit">
+		<button id="form-reset" (click)="onReset()">Reset</button>
+	</form>

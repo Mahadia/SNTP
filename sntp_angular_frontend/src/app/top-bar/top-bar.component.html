@@ -1,0 +1,11 @@
+<div id="bar-div">
+	<div id="logo-div">
+		<img id="my-logo" [src]="imgPath">
+	</div>
+	<div *ngIf="!login_state" id="button-div">
+		<button mat-raised-button (click)="loginHandler()" id="login-btn">{{this.btnLabel}}</button>
+	</div>
+	<div *ngIf="login_state" id="monitor-div">
+		<button mat-raised-button (click)="loginHandler()" id="login-btn">{{this.btnLabel}}</button>
+	</div>
+</div>

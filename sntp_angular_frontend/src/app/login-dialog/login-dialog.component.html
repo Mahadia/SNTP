@@ -1,0 +1,17 @@
+<div id="login-div">
+  <h1 mat-dialog-title>Admin Login</h1>
+  <div mat-dialog-content>
+    <div class="login-elem">
+      <label class="login-label" for="uname"><b>Username</b></label>
+      <input mat-input [(ngModel)]="login_data.username" type="text" placeholder="Enter Username" name="uname" required>
+    </div>
+    <div class="login-elem">
+      <label class="login-label" for="psw"><b>Password</b></label>
+      <input mat-input [(ngModel)]="login_data.password" type="password" placeholder="Enter Password" name="psw" required>
+    </div>
+  </div>
+  <div mat-dialog-actions id="login-btn-div">
+    <button mat-button class="login-btn" (click)="onLoginClick()">Login</button>
+    <button mat-button class="login-btn" (click)="onCancelClick()">Cancel</button>
+  </div>
+</div>
