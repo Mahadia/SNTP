@@ -1,3 +1,5 @@
 tf_model_flask/venv
 tf_model_flask/__pycache__
 *.pyc
+
+sntp_angular_frontend/node_modules/*
