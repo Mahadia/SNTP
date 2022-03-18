@@ -25,8 +25,9 @@ archive_ds_path = "datasets/archive_dataset.csv"
 tmp_ds_path = "datasets/tmp_dataset.csv"
 ds = DS_Manager(live_ds_path, archive_ds_path, tmp_ds_path)
 
+users_path = "logs/users_data.json"
+train_path = "logs/train_data.json"
 log_path = "logs/logging.json"
-stats_path = "logs/stats.json"
 monitor_graph_path = "logs/graphs/"
 
 
@@ -41,7 +42,8 @@ def get_latest_graph():
     file_type = r'*png'
     files = glob.glob(folder_path + file_type)
     max_file = max(files, key=os.path.getctime)
-    return max_file
+    abs_path = os.path.abspath(max_file)
+    return abs_path
 
 # HANDLE ALL POST REQUESTS
 def post_handler(data):
@@ -70,7 +72,7 @@ def post_handler(data):
             if data["prediction"] == "positive":
                 predict_val += 1
             ds_record = "\"{}\"; {}\n".format(data["text"], str(predict_val))
-            trig_retrain = ds.record_entry(ds_record)
+            trig_retrain = ds.record_entry(ds_record, predict_val)
             ds.live_lock = False
             #
             if trig_retrain:
@@ -87,20 +89,36 @@ def post_handler(data):
 # HANDLE ALL GET REQUESTS
 def get_handler(target):
     logging.info("Get target: {}".format(target))
-    # If requesting monitor data return log
-    if target == "monitor_data":
+    # HANDLE GET REQUEST FOR USERS DATA
+    if target == "review_data":
+        users_data = {"total": ds.review_count,
+                    "positive": ds.review_positive,
+                    "negative": ds.review_negative}
+        return jsonify(users_data)
+
+    # HANDLE GET REQUEST FOR TRAINING DATA
+    if target == "dataset_data":
+        empty_training_data = {"total": ds.ds_count,
+                                "positive": ds.ds_positive,
+                                "negative": ds.ds_negative}
+        return jsonify(empty_training_data)
+
+    # HANDLE GET REQUEST FOR TRAINING LOGS
+    if target == "train_logs":
         if exists(log_path):
             with open(log_path, 'r') as fl:
-                logs = json.load(fl)
-                return jsonify(logs)
+                log_data = json.load(fl)
+                return jsonify(log_data)
         else:
-            empty_log = {"logs": []}
-            return jsonify(empty_log)
-    # If requesting monitor graph
-    if target == "monitor_graph":
+            empty_log_data = {"logs": []}
+            return jsonify(empty_log_data)
+
+    # HANDLE GET REQUEST FOR TRAINING GRAPH
+    if target == "train_graph":
         g_path = get_latest_graph()
         if exists(g_path):
-            return send_file(g_path, mimetype='image/png')
+            my_fig = {"img": g_path}
+            return jsonify(my_fig)
     abort(404)
 
 # Handle requests sent to Flask server
