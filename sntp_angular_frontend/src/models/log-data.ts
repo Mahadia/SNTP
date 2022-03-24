@@ -1,7 +1,13 @@
+export interface AccLoss {
+  accuracy: number;
+  loss: number;
+}
+
 export interface LogItem {
-  id: number;
-  label: string;
-  key: any
+  timestamp: string;
+  winner: string;
+  new_model: AccLoss;
+  old_model: AccLoss;
 }
 
 export interface LogList {

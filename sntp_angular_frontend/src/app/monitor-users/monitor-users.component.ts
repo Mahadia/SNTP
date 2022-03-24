@@ -26,8 +26,8 @@ export class MonitorUsersComponent {
       this.t_revs = data.total;
       this.p_revs = data.positive;
       this.n_revs = data.negative;
-      this.p_perc = (this.p_revs / this.t_revs) * 100;
-      this.n_perc = (this.n_revs / this.t_revs) * 100;
+      this.p_perc = Math.round((this.p_revs / this.t_revs) * 100);
+      this.n_perc = Math.round((this.n_revs / this.t_revs) * 100);
     });
   }
 

@@ -3,6 +3,7 @@
 from datetime import datetime
 import os, threading, logging, glob, json
 from os.path import exists
+import base64
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
@@ -104,7 +105,7 @@ def get_handler(target):
         return jsonify(empty_training_data)
 
     # HANDLE GET REQUEST FOR TRAINING LOGS
-    if target == "train_logs":
+    if target == "log_data":
         if exists(log_path):
             with open(log_path, 'r') as fl:
                 log_data = json.load(fl)
@@ -115,10 +116,13 @@ def get_handler(target):
 
     # HANDLE GET REQUEST FOR TRAINING GRAPH
     if target == "train_graph":
+        my_fig = {"image": b""}
         g_path = get_latest_graph()
         if exists(g_path):
-            my_fig = {"img": g_path}
-            return jsonify(my_fig)
+            with open(g_path , "rb") as g_file :
+                data = base64.b64encode(g_file.read())
+                my_fig["image"] = data.decode('utf-8')
+        return jsonify(my_fig)
     abort(404)
 
 # Handle requests sent to Flask server

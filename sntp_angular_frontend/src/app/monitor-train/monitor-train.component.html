@@ -1,18 +1,21 @@
-<h1>Training Data Monitor</h1>
-<div>
+<div style="margin-left: 5%;">
+	<h1>Training Data Monitor</h1>
 	<h3>Dataset</h3>
 	<p>Size of dataset : {{t_cnt}}</p>
-	<p>Number of positive samples : {{p_cnt}}:<p>
-	<p>Number of negative samples : {{n_cnt}}<p>
-	<p>Percentage of positive samples : {{p_perc}}<p>
-	<p>Percentage of negative samples : {{n_perc}}</p>
+	<p>Number of positive samples : {{p_cnt}}  -  Percentage of positive samples : {{p_perc}}%</p>
+	<p>Number of negative samples : {{n_cnt}}  -  Percentage of negative samples : {{n_perc}}%</p>
 </div>
-<div>
+<div style="margin-left: 5%;">
 	<h3>Re-Training</h3>
-	<p>Total number of re-trainings :</p>
-	<p>RETRAINING LOG</p>
+	<p>Total number of re-trainings : {{logCount}}</p>
+	<h4 style="margin-bottom: 5px;">RETRAINING LOG</h4>
+	<div class="log-div">
+		<div *ngFor="let log of logList.logs">
+			<p class="log-p">{{log.timestamp}} - Winner: {{log.winner}} - NEW( Acc: {{log.new_model.accuracy}}, Loss: {{log.new_model.loss}} ) - OLD( Acc: {{log.old_model.accuracy}}, Loss: {{log.old_model.loss}} )</p>
+		</div>
+	</div>
 </div>
-<div>
-	<h3>Current Model</h3>
-	<img [src]="imgPath">
+<div style="padding: 0;margin-left: 5%;">
+	<h4 style="margin: 0;">CURRENT MODEL</h4>
+	<img [src]="myGraph" width="1000" height="450">
 </div>

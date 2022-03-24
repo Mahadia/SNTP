@@ -4,7 +4,6 @@ export interface TrainData {
   negative: number;
 }
 
-
-export interface ImgFilePath {
-  img: string
+export interface TrainGraph {
+  image: string
 }

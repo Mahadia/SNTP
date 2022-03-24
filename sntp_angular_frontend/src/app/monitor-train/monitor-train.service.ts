@@ -5,7 +5,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-import { TrainData, ImgFilePath } from '../../models/train-data';
+import { TrainData, TrainGraph } from '../../models/train-data';
 import { LogList } from '../../models/log-data';
 
 
@@ -26,11 +26,10 @@ export class MonitorTrainService {
             .pipe(catchError(this.handleError));
     }
 
-    getTrainFig(){
-      return this.http.get<ImgFilePath>(this.SERVER_URL,{ params: {target: "train_graph" }})
-              .pipe(catchError(this.handleError));
-      }
-
+  getGraph() {
+    return this.http.get<TrainGraph>(this.SERVER_URL,{ params: {target: "train_graph" }})
+            .pipe(catchError(this.handleError));
+    }
 
   private handleError(error: HttpErrorResponse) {
     alert("We apologize there has been an error,\nplease try again later.");

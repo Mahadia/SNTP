@@ -3,9 +3,10 @@ import { FormBuilder } from '@angular/forms';
 
 import { MonitorTrainService } from './monitor-train.service';
 
-import { TrainData, ImgFilePath } from '../../models/train-data';
-import { LogList } from '../../models/log-data';
+import { TrainData, TrainGraph } from '../../models/train-data';
+import { LogList, LogItem } from '../../models/log-data';
 
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 
 @Component({
@@ -21,9 +22,14 @@ export class MonitorTrainComponent {
   p_perc: number = 0;
   n_perc: number = 0;
 
-  imgPath: string = "";
+  logCount: number = 0;
+  logList: LogList = {logs: []};
 
-  constructor(private monTrainService: MonitorTrainService) {
+  public myGraph : any;
+  private readonly imageType : string = 'data:image/PNG;base64,';
+
+  constructor(private monTrainService: MonitorTrainService,
+              private mySanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -32,12 +38,19 @@ export class MonitorTrainComponent {
       this.t_cnt = data.total;
       this.p_cnt = data.positive;
       this.n_cnt = data.negative;
-      this.p_perc = (this.p_cnt / this.t_cnt) * 100;
-      this.n_perc = (this.n_cnt / this.t_cnt) * 100;
+      this.p_perc = Math.round((this.p_cnt / this.t_cnt) * 100);
+      this.n_perc = Math.round((this.n_cnt / this.t_cnt) * 100);
     });
-    this.monTrainService.getTrainFig()
-    .subscribe((data: ImgFilePath) => {
-      this.imgPath = data.img;
+    this.monTrainService.getLogData()
+    .subscribe((data: LogList) => {
+      console.log(data);
+      this.logList = data;
+      this.logCount = data.logs.length;
+      console.log(this.logCount);
+    });
+    this.monTrainService.getGraph()
+    .subscribe((data: TrainGraph ) => {
+      this.myGraph = this.mySanitizer.bypassSecurityTrustUrl(this.imageType + data.image);
     });
   }
 

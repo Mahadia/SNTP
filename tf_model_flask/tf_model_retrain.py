@@ -143,11 +143,11 @@ def display_results(history, test_loss, test_accuracy):
 def compare_models(new_loss, new_accuracy, old_loss, old_accuracy):
     log_time = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
     results = { "timestamp": log_time,
-                "winner": "old",
-                "new": {"loss": new_loss, "accuracy": new_accuracy},
-                "old": {"loss": old_loss, "accuracy": old_accuracy}}
+                "winner": "Old Model",
+                "new_model": {"loss": new_loss, "accuracy": new_accuracy},
+                "old_model": {"loss": old_loss, "accuracy": old_accuracy}}
     if (new_accuracy / new_loss) > (old_accuracy / new_loss):
-        results["winner"] = "new"
+        results["winner"] = "New Model"
     return results
 
 # WRITE RETRAIN EVENT TO LOGGER
