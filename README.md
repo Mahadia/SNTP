@@ -8,6 +8,8 @@ This is the frontend of the application. In order to run the frontend first run 
 
 This is a reimplementation of the 'TF Inference Server', using the Flask backend micro-framework. Launch 'tf\_model\_flask/tf\_model\_server.py' to start the Flask server. This provides a RESTful API for running predictions on the AI Model, Adding new records to the dataset and retrieving monitor information. After 1000 new labeled text samples have been added to the dataset the AI retraining process will trigger automatically. The newly trained model will be compared with the old model. If the new model is better the old model will be archived and the new model will go live.
 
+![](tf_model_flask/assets/tf_flask_server_schema.png)
+
 ### Included Files - DIR: tf\_model\_flask
 1. tf\_model\_server.py - This is the main function of the backend, it also serves as the entry point for the frontend. The backend server is started by running this fie. This program also manages the logging functions provided by the backend.
 2. dataset\_manager.py - This module, as the name suggests, manages the dataset. It writes new comments to a "live" dataset, which when full, is transfered to a temporary training database, and is then finally archived in the primary dataset if retraining is completed successfully. If retraining fails the dataset manager maintains data in the "live" dataset until a successful retraining is completed (note: success, refers to the operation not the performance of the retrained model).
@@ -26,8 +28,6 @@ This is a reimplementation of the 'TF Inference Server', using the Flask backend
   1. sentiment\_classifier.tf - The current active AI model running on the backend.
   2. DIR: archive - Contains all the old AI models previously used by our application.
 8. DIR: assets - Contains image content for README documentation. 
-
-![](tf_model_flask/assets/tf_flask_server_schema.png)
 
 ### REST API
 
